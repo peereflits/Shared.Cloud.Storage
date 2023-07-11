@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>Peereflits.Shared.Cloud.Storage.Tests</AssemblyName>
+    <RootNamespace>Peereflits.Shared.Cloud.Storage.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationIcon>..\Solution Items\favicon.ico</ApplicationIcon>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>latest</LangVersion>
+	  <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Peereflits</Authors>
+		<Copyright>No Copyright ©, The Netherlands</Copyright>
+		<Description>Peereflits.Shared.Cloud.Storage.Tests is a unittest library of Peereflits.Shared.Cloud.Storage.</Description>
+		<Product>Peereflits.Shared.Cloud.Storage.Tests</Product>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+    <PackageReference Include="NSubstitute" Version="5.0.0" />
+    <PackageReference Include="xunit" Version="2.5.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Storage.Interfaces\Storage.Interfaces.csproj" />
+    <ProjectReference Include="..\Storage\Storage.csproj" />
+  </ItemGroup>
+
+</Project>

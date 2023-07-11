@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>Peereflits.Shared.Cloud.Storage</AssemblyName>
+		<RootNamespace>Peereflits.Shared.Cloud.Storage</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<ApplicationIcon>..\Solution Items\favicon.ico</ApplicationIcon>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Peereflits</Authors>
+		<Copyright>No Copyright ©, The Netherlands</Copyright>
+		<Description>Peereflits.Shared.Cloud.Storage is an implementation library for working with Azure storage accounts.</Description>
+		<Product>Peereflits.Shared.Cloud.Storage</Product>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Package">
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageIcon>PackageIcon.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/peereflits/Shared.Cloud.Storage</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/peereflits/Shared.Cloud.Storage</RepositoryUrl>
+		<Title>Peereflits.Shared.Cloud.Storage package</Title>
+		<PackageDescription>
+Peereflits.Shared.Cloud.Storage is an implementation library for working with Azure storage accounts.
+This component is a shared infrastructure library of Peereflits.
+		</PackageDescription>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="..\Solution Items\PackageIcon.png" Link="Properties\PackageIcon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+		<PackageReference Include="Destructurama.Attributed" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Storage.Interfaces\Storage.Interfaces.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Peereflits.Shared.Cloud.Storage.Tests" />
+		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+	</ItemGroup>
+
+</Project>
