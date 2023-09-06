@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Xunit;
@@ -18,10 +19,30 @@ public class EmulatorFixture : IAsyncLifetime
 
     public EmulatorFixture()
     {
+        ConfigurationOne = new ContainerConfiguration
+                           {
+                               ConnectionString = ConnectionString,
+                               ContainerName = ContainerName1
+                           };
+
+        ConfigurationTwo = new ContainerConfiguration
+                           {
+                               ConnectionString = ConnectionString,
+                               ContainerName = ContainerName2
+                           };
+
+        var processes = Process.GetProcessesByName("azurite");
+
+        if(processes.Any())
+        {
+            process = processes.First();
+            return;
+        }
+
         var info = new ProcessStartInfo
                    {
                        FileName = GetAzuritePath(),
-                       CreateNoWindow = true,
+                       CreateNoWindow = false,
                        UseShellExecute = false,
                        RedirectStandardOutput = true,
                        Arguments = "--skipApiVersionCheck"
@@ -34,38 +55,23 @@ public class EmulatorFixture : IAsyncLifetime
                                       };
 
         process.Start();
-
-        ConfigurationOne = new ContainerConfiguration
-                           {
-                               ConnectionString = ConnectionString,
-                               ContainerName = ContainerName1
-                           };
-
-        ConfigurationTwo = new ContainerConfiguration
-                           {
-                               ConnectionString = ConnectionString,
-                               ContainerName = ContainerName2
-                           };
     }
 
-    private string GetAzuritePath()
+    private static string GetAzuritePath()
     {
-        string programFiles = Environment.GetEnvironmentVariable("ProgramFiles");
+        string programFiles = Environment.GetEnvironmentVariable("ProgramFiles") ?? "C:\\Program Files";
 
-        string[] editions = { "Professional", "Enterprise" };
-        var path = $"{programFiles}\\Microsoft Visual Studio\\2022\\{editions[0]}" 
-                 + "\\Common7\\IDE\\Extensions\\Microsoft\\Azure Storage Emulator\\azurite.exe";
+        string[] editions = { "Enterprise", "Professional", "Community" };
 
-        if(File.Exists(path))
+        foreach(string edition in editions)
         {
-            return path;
-        }
+            var path = $"{programFiles}\\Microsoft Visual Studio\\2022\\{edition}" 
+                     + "\\Common7\\IDE\\Extensions\\Microsoft\\Azure Storage Emulator\\azurite.exe";
 
-        path = $"{programFiles}\\Microsoft Visual Studio\\2022\\{editions[1]}" 
-             + "\\Common7\\IDE\\Extensions\\Microsoft\\Azure Storage Emulator\\azurite.exe";
-        if(File.Exists(path))
-        {
-            return path;
+            if(File.Exists(path))
+            {
+                return path;
+            }
         }
 
         throw new NotSupportedException("You cannot run the unit test with the storage emulator because Azurite is not installed.");

@@ -1,23 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<AssemblyName>Peereflits.Shared.Cloud.Storage.Interfaces</AssemblyName>
 		<RootNamespace>Peereflits.Shared.Cloud.Storage</RootNamespace>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<ApplicationIcon>..\Solution Items\favicon.ico</ApplicationIcon>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<LangVersion>latest</LangVersion>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
 
 	<PropertyGroup>
-		<Authors>Peereflits</Authors>
-		<Copyright>No Copyright ©, The Netherlands</Copyright>
 		<Description>Peereflits.Shared.Cloud.Storage.Interfaces is an interface library of Peereflits.Shared.Cloud.Storage.</Description>
-		<Product>Peereflits.Shared.Cloud.Storage</Product>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Package">

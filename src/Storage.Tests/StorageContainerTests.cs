@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Peereflits.Shared.Cloud.Storage.Tests;
 
-[Collection(Testing.CollectionName)]
+[CollectionDefinition(Testing.CollectionName, DisableParallelization = true)]
 [Trait(Testing.Category, Testing.RunWithStorageEmulator)]
 public class StorageContainerTests : IClassFixture<EmulatorFixture>, IAsyncLifetime
 {

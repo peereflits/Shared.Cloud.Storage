@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Peereflits.Shared.Cloud.Storage.Tests;
 
-[Collection(Testing.CollectionName)]
+[CollectionDefinition(Testing.CollectionName, DisableParallelization = true)]
 [Trait(Testing.Category, Testing.RunWithStorageEmulator)]
 public class StorageBlobTests : IClassFixture<EmulatorFixture>
 {
@@ -63,7 +63,7 @@ public class StorageBlobTests : IClassFixture<EmulatorFixture>
         string leaseId1 = await subject.AcquireLease(testBlob.FileName);
 
         var ex = await Assert.ThrowsAsync<StorageException>(() => subject.AcquireLease(testBlob.FileName));
-        Assert.Equal("LeaseAlreadyPresent", (ex.InnerException as RequestFailedException).ErrorCode);
+        Assert.Equal("LeaseAlreadyPresent", (ex.InnerException as RequestFailedException)?.ErrorCode);
 
         await subject.ReleaseLease(testBlob.FileName, leaseId1);
 
@@ -293,7 +293,7 @@ public class StorageBlobTests : IClassFixture<EmulatorFixture>
     }
 
     [Fact]
-    public async Task WhenUpload_WhileBlobDoestNotExist_ItShouldSucceed()
+    public async Task WhenUpload_WhileBlobDoesNotExist_ItShouldSucceed()
     {
         if(await subject.Exists(testBlob.FileName))
         {
@@ -369,7 +369,7 @@ public class StorageBlobTests : IClassFixture<EmulatorFixture>
         string lease = await target.AcquireLease(testBlob.FileName);
 
         var ex = await Assert.ThrowsAsync<StorageException>(()=> subject.Upload(testBlob));
-        Assert.Equal("LeaseIdMissing", (ex.InnerException as RequestFailedException).ErrorCode);
+        Assert.Equal("LeaseIdMissing", (ex.InnerException as RequestFailedException)?.ErrorCode);
 
         await target.Delete(testBlob.FileName, lease);
     }
