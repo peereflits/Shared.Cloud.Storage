@@ -35,7 +35,7 @@ public class EmulatorFixture : IAsyncLifetime
 
         if(processes.Any())
         {
-            process = processes.First();
+            process = processes.OrderBy(x=>x.Id).First();
             return;
         }
 
@@ -101,11 +101,6 @@ public class EmulatorFixture : IAsyncLifetime
 
     private void Dispose()
     {
-        if(process == null)
-        {
-            return;
-        }
-
         if(!process.HasExited)
         {
             process.Kill();

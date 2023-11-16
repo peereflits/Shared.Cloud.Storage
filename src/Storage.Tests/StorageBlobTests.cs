@@ -134,7 +134,10 @@ public class StorageBlobTests : IClassFixture<EmulatorFixture>
         Assert.Equal(testBlob.FileName, result.FileName);
         Assert.Equal(testBlob.Content.Length, result.ContentLength);
         Assert.Equal(testBlob.ContentType, result.ContentType);
-        Assert.Equal(DateTime.Now.AddHours(-2), result.CreatedOn.DateTime, TimeSpan.FromSeconds(3));
+
+        var expected = DateTime.UtcNow.AddHours(result.ModifiedOn.Offset.Hours);
+        var actual = result.ModifiedOn.DateTime;
+        Assert.Equal(expected, actual, TimeSpan.FromSeconds(3));
     }
 
     [Fact]

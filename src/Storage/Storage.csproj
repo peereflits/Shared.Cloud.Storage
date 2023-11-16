@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<AssemblyName>Peereflits.Shared.Cloud.Storage</AssemblyName>
 		<RootNamespace>Peereflits.Shared.Cloud.Storage</RootNamespace>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 	</PropertyGroup>
 
   <PropertyGroup>
@@ -35,9 +35,9 @@ This component is a shared infrastructure library of Peereflits.
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Storage.Blobs" Version="12.17.0" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
 		<PackageReference Include="Destructurama.Attributed" Version="3.1.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
