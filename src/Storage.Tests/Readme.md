@@ -12,4 +12,4 @@ For more info, see [Use the Azurite emulator for local Azure Storage development
 To solve this:
 
 1. In the task manager kill Azurite.
-1. Drop folder `$\\src\Storage.Tests\bin\Debug\net6.0\__blobstorage__`
+1. Drop folder `$\\src\Storage.Tests\bin\Debug\net|6|7|8.0\__blobstorage__`

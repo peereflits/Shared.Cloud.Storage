@@ -35,9 +35,9 @@ This component is a shared infrastructure library of Peereflits.
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
-		<PackageReference Include="Destructurama.Attributed" Version="3.1.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
+		<PackageReference Include="Destructurama.Attributed" Version="4.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
