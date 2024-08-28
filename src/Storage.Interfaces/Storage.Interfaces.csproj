@@ -18,6 +18,7 @@
 	<PropertyGroup Label="Package">
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageIcon>PackageIcon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/peereflits/Shared.Cloud.Storage</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/peereflits/Shared.Cloud.Storage</RepositoryUrl>
